@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+/*place is used to identify a place*/
+message City{
+	string name= 1;
+	int32 zip_code= 2;
+	string country_name = 3;
+
+	}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "/home/diaccio/Desktop/Protobuf3_training/Basics/Practise_2/import/Street.proto"
+
+
+message Building{
+	
+	string building_name= 1;
+	int building_number = 2;
+	Street street = 3;
+
+	}
+
+
+
+
+
+
+

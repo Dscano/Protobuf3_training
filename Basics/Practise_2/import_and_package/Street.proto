@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "/home/diaccio/Desktop/Protobuf3_training/Basics/Practise_2/import_and_package/City.proto"
+package "my.street"
+
+
+message Street {
+
+		string street_name = 1;	
+		my.city.City city = 2;
+
+	}
