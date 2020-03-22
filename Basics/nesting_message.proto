@@ -1,4 +1,4 @@
-syntax = "proto3"
+syntax = "proto3";
 
 /*Person is used to identify users
 across our system */
@@ -15,7 +15,7 @@ message Person{
 	repeated string phone_numbers = 7;
 
 	// we consider oly tree types of eye
-	enum EyeColur{
+	enum EyeColour{
 		UNKNOWN_EYE_COLOR  = 0;
 		EYE_GREEN = 1;
 		EYE_BROWN = 2;

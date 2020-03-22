@@ -1,0 +1,1 @@
+docker run --rm -it -v /home/diaccio/Desktop/Protobuf3_training/Basics:/app konsumer/protoc -I=/app --js_out=/app/Compile  /app/nesting_message.proto
