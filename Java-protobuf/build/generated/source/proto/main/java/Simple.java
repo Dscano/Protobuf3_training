@@ -12,69 +12,60 @@ public final class Simple {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface PersonOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Person)
+  public interface SimpleMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:SimpleMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 age = 1;</code>
+     * <code>int32 id = 1;</code>
      */
-    int getAge();
+    int getId();
 
     /**
-     * <code>string first_name = 2;</code>
+     * <code>bool is_simple = 2;</code>
      */
-    java.lang.String getFirstName();
+    boolean getIsSimple();
+
     /**
-     * <code>string first_name = 2;</code>
+     * <code>string name = 3;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 3;</code>
      */
     com.google.protobuf.ByteString
-        getFirstNameBytes();
+        getNameBytes();
 
     /**
-     * <code>string last_name = 3;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    java.lang.String getLastName();
+    java.util.List<java.lang.Integer> getSampleListList();
     /**
-     * <code>string last_name = 3;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    com.google.protobuf.ByteString
-        getLastNameBytes();
-
+    int getSampleListCount();
     /**
-     * <code>bytes small_pictures = 4;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    com.google.protobuf.ByteString getSmallPictures();
-
-    /**
-     * <code>bool is_profile_verified = 5;</code>
-     */
-    boolean getIsProfileVerified();
-
-    /**
-     * <code>float height = 6;</code>
-     */
-    float getHeight();
+    int getSampleList(int index);
   }
   /**
-   * Protobuf type {@code Person}
+   * Protobuf type {@code SimpleMessage}
    */
-  public  static final class Person extends
+  public  static final class SimpleMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Person)
-      PersonOrBuilder {
+      // @@protoc_insertion_point(message_implements:SimpleMessage)
+      SimpleMessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Person.newBuilder() to construct.
-    private Person(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SimpleMessage.newBuilder() to construct.
+    private SimpleMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Person() {
-      age_ = 0;
-      firstName_ = "";
-      lastName_ = "";
-      smallPictures_ = com.google.protobuf.ByteString.EMPTY;
-      isProfileVerified_ = false;
-      height_ = 0F;
+    private SimpleMessage() {
+      id_ = 0;
+      isSimple_ = false;
+      name_ = "";
+      sampleList_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -82,7 +73,7 @@ public final class Simple {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Person(
+    private SimpleMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -110,34 +101,39 @@ public final class Simple {
             }
             case 8: {
 
-              age_ = input.readInt32();
+              id_ = input.readInt32();
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 16: {
 
-              firstName_ = s;
+              isSimple_ = input.readBool();
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              lastName_ = s;
+              name_ = s;
+              break;
+            }
+            case 32: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                sampleList_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              sampleList_.add(input.readInt32());
               break;
             }
             case 34: {
-
-              smallPictures_ = input.readBytes();
-              break;
-            }
-            case 40: {
-
-              isProfileVerified_ = input.readBool();
-              break;
-            }
-            case 53: {
-
-              height_ = input.readFloat();
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
+                sampleList_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                sampleList_.add(input.readInt32());
+              }
+              input.popLimit(limit);
               break;
             }
           }
@@ -148,125 +144,100 @@ public final class Simple {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          sampleList_ = java.util.Collections.unmodifiableList(sampleList_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Simple.internal_static_Person_descriptor;
+      return Simple.internal_static_SimpleMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Simple.internal_static_Person_fieldAccessorTable
+      return Simple.internal_static_SimpleMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Simple.Person.class, Simple.Person.Builder.class);
+              Simple.SimpleMessage.class, Simple.SimpleMessage.Builder.class);
     }
 
-    public static final int AGE_FIELD_NUMBER = 1;
-    private int age_;
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
     /**
-     * <code>int32 age = 1;</code>
+     * <code>int32 id = 1;</code>
      */
-    public int getAge() {
-      return age_;
+    public int getId() {
+      return id_;
     }
 
-    public static final int FIRST_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object firstName_;
+    public static final int IS_SIMPLE_FIELD_NUMBER = 2;
+    private boolean isSimple_;
     /**
-     * <code>string first_name = 2;</code>
+     * <code>bool is_simple = 2;</code>
      */
-    public java.lang.String getFirstName() {
-      java.lang.Object ref = firstName_;
+    public boolean getIsSimple() {
+      return isSimple_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 3;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        firstName_ = s;
+        name_ = s;
         return s;
       }
     }
     /**
-     * <code>string first_name = 2;</code>
+     * <code>string name = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getFirstNameBytes() {
-      java.lang.Object ref = firstName_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        firstName_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int LAST_NAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object lastName_;
+    public static final int SAMPLE_LIST_FIELD_NUMBER = 4;
+    private java.util.List<java.lang.Integer> sampleList_;
     /**
-     * <code>string last_name = 3;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    public java.lang.String getLastName() {
-      java.lang.Object ref = lastName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        lastName_ = s;
-        return s;
-      }
+    public java.util.List<java.lang.Integer>
+        getSampleListList() {
+      return sampleList_;
     }
     /**
-     * <code>string last_name = 3;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    public com.google.protobuf.ByteString
-        getLastNameBytes() {
-      java.lang.Object ref = lastName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        lastName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getSampleListCount() {
+      return sampleList_.size();
     }
-
-    public static final int SMALL_PICTURES_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString smallPictures_;
     /**
-     * <code>bytes small_pictures = 4;</code>
+     * <code>repeated int32 sample_list = 4;</code>
      */
-    public com.google.protobuf.ByteString getSmallPictures() {
-      return smallPictures_;
+    public int getSampleList(int index) {
+      return sampleList_.get(index);
     }
-
-    public static final int IS_PROFILE_VERIFIED_FIELD_NUMBER = 5;
-    private boolean isProfileVerified_;
-    /**
-     * <code>bool is_profile_verified = 5;</code>
-     */
-    public boolean getIsProfileVerified() {
-      return isProfileVerified_;
-    }
-
-    public static final int HEIGHT_FIELD_NUMBER = 6;
-    private float height_;
-    /**
-     * <code>float height = 6;</code>
-     */
-    public float getHeight() {
-      return height_;
-    }
+    private int sampleListMemoizedSerializedSize = -1;
 
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -280,23 +251,22 @@ public final class Simple {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (age_ != 0) {
-        output.writeInt32(1, age_);
+      getSerializedSize();
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
       }
-      if (!getFirstNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, firstName_);
+      if (isSimple_ != false) {
+        output.writeBool(2, isSimple_);
       }
-      if (!getLastNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, lastName_);
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
       }
-      if (!smallPictures_.isEmpty()) {
-        output.writeBytes(4, smallPictures_);
+      if (getSampleListList().size() > 0) {
+        output.writeUInt32NoTag(34);
+        output.writeUInt32NoTag(sampleListMemoizedSerializedSize);
       }
-      if (isProfileVerified_ != false) {
-        output.writeBool(5, isProfileVerified_);
-      }
-      if (height_ != 0F) {
-        output.writeFloat(6, height_);
+      for (int i = 0; i < sampleList_.size(); i++) {
+        output.writeInt32NoTag(sampleList_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -306,27 +276,30 @@ public final class Simple {
       if (size != -1) return size;
 
       size = 0;
-      if (age_ != 0) {
+      if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, age_);
+          .computeInt32Size(1, id_);
       }
-      if (!getFirstNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, firstName_);
-      }
-      if (!getLastNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, lastName_);
-      }
-      if (!smallPictures_.isEmpty()) {
+      if (isSimple_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, smallPictures_);
+          .computeBoolSize(2, isSimple_);
       }
-      if (isProfileVerified_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(5, isProfileVerified_);
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
       }
-      if (height_ != 0F) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(6, height_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < sampleList_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(sampleList_.get(i));
+        }
+        size += dataSize;
+        if (!getSampleListList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        sampleListMemoizedSerializedSize = dataSize;
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -338,26 +311,20 @@ public final class Simple {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Simple.Person)) {
+      if (!(obj instanceof Simple.SimpleMessage)) {
         return super.equals(obj);
       }
-      Simple.Person other = (Simple.Person) obj;
+      Simple.SimpleMessage other = (Simple.SimpleMessage) obj;
 
       boolean result = true;
-      result = result && (getAge()
-          == other.getAge());
-      result = result && getFirstName()
-          .equals(other.getFirstName());
-      result = result && getLastName()
-          .equals(other.getLastName());
-      result = result && getSmallPictures()
-          .equals(other.getSmallPictures());
-      result = result && (getIsProfileVerified()
-          == other.getIsProfileVerified());
-      result = result && (
-          java.lang.Float.floatToIntBits(getHeight())
-          == java.lang.Float.floatToIntBits(
-              other.getHeight()));
+      result = result && (getId()
+          == other.getId());
+      result = result && (getIsSimple()
+          == other.getIsSimple());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getSampleListList()
+          .equals(other.getSampleListList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -369,88 +336,85 @@ public final class Simple {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + AGE_FIELD_NUMBER;
-      hash = (53 * hash) + getAge();
-      hash = (37 * hash) + FIRST_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getFirstName().hashCode();
-      hash = (37 * hash) + LAST_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getLastName().hashCode();
-      hash = (37 * hash) + SMALL_PICTURES_FIELD_NUMBER;
-      hash = (53 * hash) + getSmallPictures().hashCode();
-      hash = (37 * hash) + IS_PROFILE_VERIFIED_FIELD_NUMBER;
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + IS_SIMPLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getIsProfileVerified());
-      hash = (37 * hash) + HEIGHT_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getHeight());
+          getIsSimple());
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      if (getSampleListCount() > 0) {
+        hash = (37 * hash) + SAMPLE_LIST_FIELD_NUMBER;
+        hash = (53 * hash) + getSampleListList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Simple.Person parseFrom(byte[] data)
+    public static Simple.SimpleMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Simple.Person parseFrom(java.io.InputStream input)
+    public static Simple.SimpleMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Simple.Person parseDelimitedFrom(java.io.InputStream input)
+    public static Simple.SimpleMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Simple.Person parseDelimitedFrom(
+    public static Simple.SimpleMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Simple.Person parseFrom(
+    public static Simple.SimpleMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -462,7 +426,7 @@ public final class Simple {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Simple.Person prototype) {
+    public static Builder newBuilder(Simple.SimpleMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -477,25 +441,25 @@ public final class Simple {
       return builder;
     }
     /**
-     * Protobuf type {@code Person}
+     * Protobuf type {@code SimpleMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Person)
-        Simple.PersonOrBuilder {
+        // @@protoc_insertion_point(builder_implements:SimpleMessage)
+        Simple.SimpleMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Simple.internal_static_Person_descriptor;
+        return Simple.internal_static_SimpleMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Simple.internal_static_Person_fieldAccessorTable
+        return Simple.internal_static_SimpleMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Simple.Person.class, Simple.Person.Builder.class);
+                Simple.SimpleMessage.class, Simple.SimpleMessage.Builder.class);
       }
 
-      // Construct using Simple.Person.newBuilder()
+      // Construct using Simple.SimpleMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -512,46 +476,47 @@ public final class Simple {
       }
       public Builder clear() {
         super.clear();
-        age_ = 0;
+        id_ = 0;
 
-        firstName_ = "";
+        isSimple_ = false;
 
-        lastName_ = "";
+        name_ = "";
 
-        smallPictures_ = com.google.protobuf.ByteString.EMPTY;
-
-        isProfileVerified_ = false;
-
-        height_ = 0F;
-
+        sampleList_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Simple.internal_static_Person_descriptor;
+        return Simple.internal_static_SimpleMessage_descriptor;
       }
 
-      public Simple.Person getDefaultInstanceForType() {
-        return Simple.Person.getDefaultInstance();
+      public Simple.SimpleMessage getDefaultInstanceForType() {
+        return Simple.SimpleMessage.getDefaultInstance();
       }
 
-      public Simple.Person build() {
-        Simple.Person result = buildPartial();
+      public Simple.SimpleMessage build() {
+        Simple.SimpleMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Simple.Person buildPartial() {
-        Simple.Person result = new Simple.Person(this);
-        result.age_ = age_;
-        result.firstName_ = firstName_;
-        result.lastName_ = lastName_;
-        result.smallPictures_ = smallPictures_;
-        result.isProfileVerified_ = isProfileVerified_;
-        result.height_ = height_;
+      public Simple.SimpleMessage buildPartial() {
+        Simple.SimpleMessage result = new Simple.SimpleMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.id_ = id_;
+        result.isSimple_ = isSimple_;
+        result.name_ = name_;
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          sampleList_ = java.util.Collections.unmodifiableList(sampleList_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.sampleList_ = sampleList_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -583,35 +548,35 @@ public final class Simple {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Simple.Person) {
-          return mergeFrom((Simple.Person)other);
+        if (other instanceof Simple.SimpleMessage) {
+          return mergeFrom((Simple.SimpleMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Simple.Person other) {
-        if (other == Simple.Person.getDefaultInstance()) return this;
-        if (other.getAge() != 0) {
-          setAge(other.getAge());
+      public Builder mergeFrom(Simple.SimpleMessage other) {
+        if (other == Simple.SimpleMessage.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
         }
-        if (!other.getFirstName().isEmpty()) {
-          firstName_ = other.firstName_;
+        if (other.getIsSimple() != false) {
+          setIsSimple(other.getIsSimple());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
           onChanged();
         }
-        if (!other.getLastName().isEmpty()) {
-          lastName_ = other.lastName_;
+        if (!other.sampleList_.isEmpty()) {
+          if (sampleList_.isEmpty()) {
+            sampleList_ = other.sampleList_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureSampleListIsMutable();
+            sampleList_.addAll(other.sampleList_);
+          }
           onChanged();
-        }
-        if (other.getSmallPictures() != com.google.protobuf.ByteString.EMPTY) {
-          setSmallPictures(other.getSmallPictures());
-        }
-        if (other.getIsProfileVerified() != false) {
-          setIsProfileVerified(other.getIsProfileVerified());
-        }
-        if (other.getHeight() != 0F) {
-          setHeight(other.getHeight());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -626,11 +591,11 @@ public final class Simple {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Simple.Person parsedMessage = null;
+        Simple.SimpleMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Simple.Person) e.getUnfinishedMessage();
+          parsedMessage = (Simple.SimpleMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -639,248 +604,191 @@ public final class Simple {
         }
         return this;
       }
+      private int bitField0_;
 
-      private int age_ ;
+      private int id_ ;
       /**
-       * <code>int32 age = 1;</code>
+       * <code>int32 id = 1;</code>
        */
-      public int getAge() {
-        return age_;
+      public int getId() {
+        return id_;
       }
       /**
-       * <code>int32 age = 1;</code>
+       * <code>int32 id = 1;</code>
        */
-      public Builder setAge(int value) {
+      public Builder setId(int value) {
         
-        age_ = value;
+        id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 age = 1;</code>
+       * <code>int32 id = 1;</code>
        */
-      public Builder clearAge() {
+      public Builder clearId() {
         
-        age_ = 0;
+        id_ = 0;
         onChanged();
         return this;
       }
 
-      private java.lang.Object firstName_ = "";
+      private boolean isSimple_ ;
       /**
-       * <code>string first_name = 2;</code>
+       * <code>bool is_simple = 2;</code>
        */
-      public java.lang.String getFirstName() {
-        java.lang.Object ref = firstName_;
+      public boolean getIsSimple() {
+        return isSimple_;
+      }
+      /**
+       * <code>bool is_simple = 2;</code>
+       */
+      public Builder setIsSimple(boolean value) {
+        
+        isSimple_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool is_simple = 2;</code>
+       */
+      public Builder clearIsSimple() {
+        
+        isSimple_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 3;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          firstName_ = s;
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string first_name = 2;</code>
+       * <code>string name = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getFirstNameBytes() {
-        java.lang.Object ref = firstName_;
+          getNameBytes() {
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          firstName_ = b;
+          name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string first_name = 2;</code>
+       * <code>string name = 3;</code>
        */
-      public Builder setFirstName(
+      public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        firstName_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string first_name = 2;</code>
+       * <code>string name = 3;</code>
        */
-      public Builder clearFirstName() {
+      public Builder clearName() {
         
-        firstName_ = getDefaultInstance().getFirstName();
+        name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
       /**
-       * <code>string first_name = 2;</code>
+       * <code>string name = 3;</code>
        */
-      public Builder setFirstNameBytes(
+      public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        firstName_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object lastName_ = "";
-      /**
-       * <code>string last_name = 3;</code>
-       */
-      public java.lang.String getLastName() {
-        java.lang.Object ref = lastName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          lastName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private java.util.List<java.lang.Integer> sampleList_ = java.util.Collections.emptyList();
+      private void ensureSampleListIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          sampleList_ = new java.util.ArrayList<java.lang.Integer>(sampleList_);
+          bitField0_ |= 0x00000008;
+         }
       }
       /**
-       * <code>string last_name = 3;</code>
+       * <code>repeated int32 sample_list = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getLastNameBytes() {
-        java.lang.Object ref = lastName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          lastName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public java.util.List<java.lang.Integer>
+          getSampleListList() {
+        return java.util.Collections.unmodifiableList(sampleList_);
       }
       /**
-       * <code>string last_name = 3;</code>
+       * <code>repeated int32 sample_list = 4;</code>
        */
-      public Builder setLastName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        lastName_ = value;
+      public int getSampleListCount() {
+        return sampleList_.size();
+      }
+      /**
+       * <code>repeated int32 sample_list = 4;</code>
+       */
+      public int getSampleList(int index) {
+        return sampleList_.get(index);
+      }
+      /**
+       * <code>repeated int32 sample_list = 4;</code>
+       */
+      public Builder setSampleList(
+          int index, int value) {
+        ensureSampleListIsMutable();
+        sampleList_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>string last_name = 3;</code>
+       * <code>repeated int32 sample_list = 4;</code>
        */
-      public Builder clearLastName() {
-        
-        lastName_ = getDefaultInstance().getLastName();
+      public Builder addSampleList(int value) {
+        ensureSampleListIsMutable();
+        sampleList_.add(value);
         onChanged();
         return this;
       }
       /**
-       * <code>string last_name = 3;</code>
+       * <code>repeated int32 sample_list = 4;</code>
        */
-      public Builder setLastNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        lastName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private com.google.protobuf.ByteString smallPictures_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes small_pictures = 4;</code>
-       */
-      public com.google.protobuf.ByteString getSmallPictures() {
-        return smallPictures_;
-      }
-      /**
-       * <code>bytes small_pictures = 4;</code>
-       */
-      public Builder setSmallPictures(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        smallPictures_ = value;
+      public Builder addAllSampleList(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureSampleListIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, sampleList_);
         onChanged();
         return this;
       }
       /**
-       * <code>bytes small_pictures = 4;</code>
+       * <code>repeated int32 sample_list = 4;</code>
        */
-      public Builder clearSmallPictures() {
-        
-        smallPictures_ = getDefaultInstance().getSmallPictures();
-        onChanged();
-        return this;
-      }
-
-      private boolean isProfileVerified_ ;
-      /**
-       * <code>bool is_profile_verified = 5;</code>
-       */
-      public boolean getIsProfileVerified() {
-        return isProfileVerified_;
-      }
-      /**
-       * <code>bool is_profile_verified = 5;</code>
-       */
-      public Builder setIsProfileVerified(boolean value) {
-        
-        isProfileVerified_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool is_profile_verified = 5;</code>
-       */
-      public Builder clearIsProfileVerified() {
-        
-        isProfileVerified_ = false;
-        onChanged();
-        return this;
-      }
-
-      private float height_ ;
-      /**
-       * <code>float height = 6;</code>
-       */
-      public float getHeight() {
-        return height_;
-      }
-      /**
-       * <code>float height = 6;</code>
-       */
-      public Builder setHeight(float value) {
-        
-        height_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>float height = 6;</code>
-       */
-      public Builder clearHeight() {
-        
-        height_ = 0F;
+      public Builder clearSampleList() {
+        sampleList_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
@@ -895,49 +803,49 @@ public final class Simple {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:Person)
+      // @@protoc_insertion_point(builder_scope:SimpleMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:Person)
-    private static final Simple.Person DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:SimpleMessage)
+    private static final Simple.SimpleMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Simple.Person();
+      DEFAULT_INSTANCE = new Simple.SimpleMessage();
     }
 
-    public static Simple.Person getDefaultInstance() {
+    public static Simple.SimpleMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Person>
-        PARSER = new com.google.protobuf.AbstractParser<Person>() {
-      public Person parsePartialFrom(
+    private static final com.google.protobuf.Parser<SimpleMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SimpleMessage>() {
+      public SimpleMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Person(input, extensionRegistry);
+        return new SimpleMessage(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Person> parser() {
+    public static com.google.protobuf.Parser<SimpleMessage> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Person> getParserForType() {
+    public com.google.protobuf.Parser<SimpleMessage> getParserForType() {
       return PARSER;
     }
 
-    public Simple.Person getDefaultInstanceForType() {
+    public Simple.SimpleMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Person_descriptor;
+    internal_static_SimpleMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Person_fieldAccessorTable;
+      internal_static_SimpleMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -947,10 +855,9 @@ public final class Simple {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014simple.proto\"\201\001\n\006Person\022\013\n\003age\030\001 \001(\005\022\022" +
-      "\n\nfirst_name\030\002 \001(\t\022\021\n\tlast_name\030\003 \001(\t\022\026\n" +
-      "\016small_pictures\030\004 \001(\014\022\033\n\023is_profile_veri" +
-      "fied\030\005 \001(\010\022\016\n\006height\030\006 \001(\002b\006proto3"
+      "\n\014simple.proto\"Q\n\rSimpleMessage\022\n\n\002id\030\001 " +
+      "\001(\005\022\021\n\tis_simple\030\002 \001(\010\022\014\n\004name\030\003 \001(\t\022\023\n\013" +
+      "sample_list\030\004 \003(\005b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -964,12 +871,12 @@ public final class Simple {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_Person_descriptor =
+    internal_static_SimpleMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_Person_fieldAccessorTable = new
+    internal_static_SimpleMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Person_descriptor,
-        new java.lang.String[] { "Age", "FirstName", "LastName", "SmallPictures", "IsProfileVerified", "Height", });
+        internal_static_SimpleMessage_descriptor,
+        new java.lang.String[] { "Id", "IsSimple", "Name", "SampleList", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
